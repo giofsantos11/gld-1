@@ -391,7 +391,7 @@ merge 1:1 Person_key using `block7', keep(match master) nogen
 	recode urban (1 = 0) (2 = 1)
 	label var urban "Location is urban"
 	la de lblurban 1 "Urban" 0 "Rural"
-	label values urban lblurba18532195
+	label values urban lblurban
 
 *</_urban_>
 
@@ -415,7 +415,7 @@ merge 1:1 Person_key using `block7', keep(match master) nogen
 
 *<_subnatid2_>
 	destring Region, gen(subnatid2)
-	label var subnatid2 "NSS Region - not a national ID but useful to later re-assing states (e.g., Uttarkhand)"
+	label var subnatid2 "Subnational ID at Second Administrative Level"
 *</_subnatid2_>
 
 

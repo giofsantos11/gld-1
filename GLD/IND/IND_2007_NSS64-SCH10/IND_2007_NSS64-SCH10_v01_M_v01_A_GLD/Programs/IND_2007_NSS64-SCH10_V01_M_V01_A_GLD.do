@@ -327,7 +327,7 @@ merge 1:1 key_memb using "$path_in/Block-6-members-migration-records.dta" , keep
 *<_subnatid2_>
 	gen Region = substr(State_Region, -1, 1)
 	destring Region, gen(subnatid2)
-	label var subnatid2 "NSS Region - not a national ID but useful to later re-assing states (e.g., Uttarkhand)"
+	label var subnatid2 "Subnational ID at Second Administrative Level"
 *</_subnatid2_>
 
 

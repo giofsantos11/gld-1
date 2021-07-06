@@ -348,7 +348,7 @@ merge 1:1 Person_key using "$path_in/Block-5-Persons-usual-activity-records.dta"
 
 *<_subnatid2_>
 	destring Region, gen(subnatid2)
-	label var subnatid2 "NSS Region - not a national ID but useful to later re-assing states (e.g., Uttarkhand)"
+	label var subnatid2 "Subnational ID at Second Administrative Level"
 *</_subnatid2_>
 
 

@@ -358,7 +358,7 @@ merge m:1 Key_hhold using "$path_in\Block3-sch10--Household-Characteristics-reco
 
 *<_subnatid2_>
 	destring Region, gen(subnatid2)
-	label var subnatid2 "NSS Region - not a national ID but useful to later re-assing states (e.g., Uttarkhand)"
+	label var subnatid2 "Subnational ID at Second Administrative Level"
 *</_subnatid2_>
 
 
@@ -1770,7 +1770,7 @@ foreach v of local ed_var {
 
 *<_t_wage_nocompen_others_year_>
 	gen t_wage_nocompen_others_year = .
-	label var t_wage_nocompen_others_year "Annualized wage in all but primary & secondary jobs excl. bonuses, etc. 12 month recall)"
+	label var t_wage_nocompen_others_year "Annualized wage in all but primary and secondary jobs excl bonuses, etc 12 month recall"
 *</_t_wage_nocompen_others_year_>
 
 *<_t_wage_others_year_>

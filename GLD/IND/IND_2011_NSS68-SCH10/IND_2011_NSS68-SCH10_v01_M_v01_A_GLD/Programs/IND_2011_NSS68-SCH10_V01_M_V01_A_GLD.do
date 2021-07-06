@@ -293,7 +293,7 @@ merge 1:1 HHID Person_Serial using "$path_in/Block_7_Follow-up questions for per
 *<_subnatid2_>
 	gen Region = substr(State_Region, -1, 1)
 	destring Region, gen(subnatid2)
-	label var subnatid2 "NSS Region - not a national ID but useful to later re-assing states (e.g., Uttarkhand)"
+	label var subnatid2 "Subnational ID at Second Administrative Level"
 *</_subnatid2_>
 
 
