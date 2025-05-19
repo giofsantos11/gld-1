@@ -10,5 +10,8 @@ Unlike other databases that rely on PRIMUS for multi-stage validation, all datas
 
 <img src="Utilities/primus-gld.png" alt="Integration of GLD into PRIMUS" width="600"/>
 
+Integrating GLD into PRIMUS requires careful attention to a number of technical and procedural requirements unique to the PRIMUS platform. For instance, PRIMUS mandates that each upload be accompanied by an XML file containing summary indicators derived from the microdata. The upload process also differs depending on whether the dataset represents a new entry in GLD or an update to an existing dataset, with each scenario requiring distinct steps. In addition, there are important platform-specific constraints to consider: survey folders must not exceed 1.5 GB in total size, only certain file types are accepted, and strict version sequencing is enforced (e.g., version 2 cannot be uploaded unless version 1 already exists).
+
+The goal of this project is two-fold. First, it seeks to ensure that all these complications and requirements can be addressed through a streamlined workflow, eliminating the need for manual uploads. Second, it aims to automate the upload process itself—ideally through integration with Stata—so that PRIMUS uploads can occur seamlessly in the background without requiring significant analyst effort.
 
 This integration aligns with PRIMUS’s role as the central gateway for uploading licensed, validated data into secured cloud storage, while preserving the GLD’s core principles of openness, transparency, and user empowerment. Moreover, formalizing GLD uploads via PRIMUS increases institutional visibility, ensures traceability, and positions the GLD to scale sustainably as part of the Bank’s unified data architecture.
