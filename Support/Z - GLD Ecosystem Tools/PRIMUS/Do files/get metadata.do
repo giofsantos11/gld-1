@@ -12,8 +12,8 @@ This Stata script performs a reconciliation check between surveys uploaded to th
 	shell del "${primusfolder}/gld_dlw_reconcile*.xlsx"
 
 	clear
-    set obs 1  
-    gen fullid = ""  
+	set obs 1  
+	gen fullid = ""  
 	gen surveyid = ""
     
 	local first_level_folders: dir "${gldfolder}" dirs "*"
