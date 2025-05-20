@@ -53,7 +53,7 @@ Before uploading, the script performs a number of defensive checks to ensure dat
 
 | Check Description           | Condition                                                 | Consequence                                                    |
 |----------------------------|-----------------------------------------------------------|----------------------------------------------------------------|
-| **Check for `.dta` file**  | The harmonized Stata data file must exist in the expected folder | If missing, the survey is skipped and logged as a missing dataset |
+| **Check for `.dta` file**  | The harmonized Stata data file must exist in the expected folder | If missing, the survey is skipped and logged as a missing dataset. Users should check if the data file is misplaced or uses an inconsistent name |
 | **Folder size check**      | The total size of each folder must be under 1.5 GB        | If exceeded, the data is not uploaded and a `.doc` file is created to explain why |
 | **Case logic check**       | Raw data is only uploaded for surveys requiring new or updated raw files | Avoids uploading unnecessary files                             |
 | **GLD must have more versions than Datalibweb** | The number of versions found in GLD should be greater than in Datalibweb | If not, this may indicate a problem in GLD, such as accidental deletion or incomplete storage, and the upload is skipped or flagged |
