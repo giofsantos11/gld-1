@@ -36,7 +36,7 @@ After reconciliation, each unmatched or inconsistent survey is classified into o
 | **Case 1 – New upload** | The survey is present in GLD but not yet in Datalibweb. Both raw and harmonized data need to be uploaded. |
 | **Case 2 – Update harmonized data only** | The survey exists in both sources with the same master version (raw data), but the harmonized (alternative) version is newer in GLD. Only the harmonized file needs to be updated. |
 | **Case 3 – Update raw and harmonized data** | The survey exists in both sources, but both the raw (master) and harmonized (alternative) versions differ. A full re-upload of both components is required. |
-| **Case 4 – New upload of multiple versions** | A special variation of case 1 where upload is required for multiple versions. Example is when the latest in GLD is V02_A_V02_A_GLD, 
+| **Case 4 – New upload of multiple versions** | A special variation of case 1 where upload is required for multiple versions of harmonized and/or raw folders. Example is when the latest in GLD is V02_M_V02_A_GLD, but first upload has not yet taken place.
 
 
 ### D. Excel Output
