@@ -34,3 +34,23 @@ PRIMUS has a set of rules and constraints that users need to consider when uploa
 |------|-------------|
 | **1. Folder size limit** | • PRIMUS does not accept folder uploads larger than 1.5 GB. <br> • This applies separately to raw and harmonized folders. <br> • If the folder size exceeds this limit, the script skips uploading the `Data` folder and creates a `.doc` file explaining how to request the full dataset via email. This still allows the survey ID to be registered in PRIMUS and Datalibweb. |
 | **2. Only specific sub-folders allowed** | • Only `Data`, `Doc`, and `Programs` folders are accepted in PRIMUS. <br> • The GLD folder structure includes a `Work` folder that is not accepted by PRIMUS and must be excluded from the uploaded ZIP file. |
+| **3. Accepted file types by folder** | • PRIMUS restricts uploads to specific file extensions by folder and type. See tables below for allowed formats for **harmonized** and **raw** uploads. |
+
+### Accepted File Types – Harmonized Uploads
+
+| Folder Path              | Accepted Extensions                          |
+|--------------------------|----------------------------------------------|
+| `Data/Harmonized`        | `dta`                                        |
+| `Doc/Questionnaires`     | `csv`, `doc`, `docx`, `pdf`, `rar`, `xls`, `xlsx`, `zip` |
+| `Doc/Technical`          | `csv`, `doc`, `docx`, `dta`, `log`, `pdf`, `rar`, `xls`, `xlsx`, `zip` |
+| `Programs`               | `do`                                         |
+
+### Accepted File Types – Raw Uploads
+
+| Folder Path              | Accepted Extensions                          |
+|--------------------------|----------------------------------------------|
+| `Data/Original`          | `csv`, `dat`, `dbf`, `dct`, `do`, `dta`, `log`, `rar`, `sav`, `xls`, `xlsx`, `zip` |
+| `Data/Stata`             | `dta`                                        |
+| `Doc/Questionnaires`     | `doc`, `docx`, `pdf`, `rar`, `xlsx`, `zip`   |
+| `Doc/Technical`          | `csv`, `doc`, `docx`, `log`, `pdf`, `rar`, `xls`, `xlsx`, `zip` |
+| `Programs`               | `do`                                         |
