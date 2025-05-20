@@ -53,9 +53,19 @@ Before uploading, the script performs a number of defensive checks to ensure dat
 
 | Check Description           | Condition                                                 | Consequence                                                    |
 |----------------------------|-----------------------------------------------------------|----------------------------------------------------------------|
-| **Check for `.dta` file**  | `confirm file` is used to verify the harmonized file exists (`*_ALL.dta`) | If missing, the survey is skipped and logged as a missing dataset |
-| **Check for valid `tranxid`** | Ensures `tranxid_harmonized` is not `"NA"` or missing      | Without it, confirmation and approval cannot proceed           |
-| **Folder size check**      | Uses PowerShell to check if the ZIP will exceed 1.5 GB    | If exceeded, skips upload and creates `.doc` explanation       |
-| **Case logic check**       | Uploads raw only for cases 1, 3, and 4                    | Avoids uploading unnecessary files                             |
+| **Check for `.dta` file**  | The harmonized Stata data file must exist in the expected folder | If missing, the survey is skipped and logged as a missing dataset |
+| **Folder size check**      | The total size of each folder must be under 1.5 GB        | If exceeded, the data is not uploaded and a `.doc` file is created to explain why |
+| **Case logic check**       | Raw data is only uploaded for surveys requiring new or updated raw files | Avoids uploading unnecessary files                             |
+| **GLD must have more versions than Datalibweb** | The number of versions found in GLD should be greater than in Datalibweb | If not, this may indicate a problem in GLD, such as accidental deletion or incomplete storage, and the upload is skipped or flagged |
 
-These checks reduce error rates in batch uploads and avoid triggering PRIMUS validation failures or inconsistent system states.
+
+### 6. One-at-a-time uploads for multiple updates
+
+When multiple versions of a survey are missing in Datalibweb, PRIMUS enforces sequential versioning, meaning each version must be uploaded and approved in order. Attempting to upload a later version before its predecessor has been approved will result in a error flag.
+
+To resolve this, our workflow implements a staggered approach. During each run, only the earliest version missing in Datalibweb is selected for upload. This avoids version sequencing violations and allows the approval process to catch up before subsequent uploads.
+
+For example, suppose GLD contains versions V01 and V03, but only V01 is in Datalibweb. Since version V02 is missing, the program will upload V02 during this run. On the next run—after V02 has been approved—V03 will then be recognized as the next earliest missing version and will be uploaded.
+
+
+      
