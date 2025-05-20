@@ -14,4 +14,39 @@ Integrating GLD into PRIMUS requires careful attention to a number of technical 
 
 The goal of this project is two-fold. First, it seeks to ensure that all these complications and requirements can be addressed through a streamlined workflow, eliminating the need for manual uploads. Second, it aims to automate the upload process itself—ideally through integration with Stata—so that PRIMUS uploads can occur seamlessly in the background without requiring significant analyst effort.
 
-This integration aligns with PRIMUS’s role as the central gateway for uploading licensed, validated data into secured cloud storage, while preserving the GLD’s core principles of openness, transparency, and user empowerment. Moreover, formalizing GLD uploads via PRIMUS increases institutional visibility, ensures traceability, and positions the GLD to scale sustainably as part of the Bank’s unified data architecture.
+This GitHub page serves as a public resource for documenting the integration of the Global Labor Database (GLD) into PRIMUS. It provides:
+
+- The full codebase required for automating uploads,
+- Detailed explanations of the logic behind each step,
+- Documentation of PRIMUS protocols and constraints,
+- Reflections on best practices for addressing PRIMUS-specific requirements.
+
+### [Tasks folder](./Tasks/)
+
+The `Tasks` folder contains the `.do` files that execute the main stages of the upload pipeline. Each task corresponds to a discrete set of operations, executed in sequence as part of the end-to-end workflow:
+
+- **Task 1 – Upload and Confirm:** Identifies which GLD surveys need to be uploaded or updated in Datalibweb. It prepares the files, creates the required XML metadata, compresses folders into ZIPs, and uploads the harmonized and raw files to PRIMUS. It also confirms the transactions to move them out of draft status.
+- **Task 2 – Approve:** Automatically reviews the uploaded and confirmed transactions in PRIMUS and submits them for final approval, making the datasets visible and accessible in Datalibweb.
+- **Task 3 – Reconciliation Report:** Generates diagnostic reports comparing GLD and Datalibweb holdings, flags inconsistencies, and informs the Task 1 logic about which surveys require uploads, version updates, or no action.
+
+### [Do files folder](./Do%20files/)
+
+The `Do files` folder contains reusable subroutines and helper scripts used by the main tasks. These include:
+
+- Functions for constructing dynamic folder paths
+- XML generation code for PRIMUS compliance
+- Logging utilities for tracking file size, errors, and transaction IDs
+- Zip and upload handlers that interface with `robocopy`, `tar`, and the `primus` API
+
+These modular scripts ensure flexibility, traceability, and maintainability of the PRIMUS automation process.
+
+### [PRIMUS Rules and Constraints](./Documentation/PRIMUS-Rules-Constraints.md)
+
+This document outlines the institutional rules enforced by PRIMUS. It categorizes constraints into areas such as upload cycle requirements, transaction ID handling, version sequencing, and folder size or structure rules. Understanding these rules is essential for ensuring that uploads are successful and compliant with Bank protocols.
+
+### [Best Practices](./Documentation/Best-Practices.md)
+
+This document captures the lessons learned and best practices developed while integrating GLD into PRIMUS. It offers strategies to overcome size restrictions, streamline version control, and maintain data traceability. These recommendations are meant to improve efficiency, minimize human error, and ensure smooth operations in future integrations.
+
+
+
