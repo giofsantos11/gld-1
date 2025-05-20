@@ -12,8 +12,8 @@ This Stata script performs a reconciliation check between surveys uploaded to th
 	shell del "${primusfolder}/gld_dlw_reconcile*.xlsx"
 
 	clear
-	set obs 1  
-	gen fullid = ""  
+    set obs 1  
+    gen fullid = ""  
 	gen surveyid = ""
     
 	local first_level_folders: dir "${gldfolder}" dirs "*"
@@ -144,10 +144,14 @@ This Stata script performs a reconciliation check between surveys uploaded to th
 	rename veralt veralt_gld
 		
 	gen case_type = "1 - new upload"
-	gen digit = substr(veralt_gld, -2, 2)
-	destring digit, replace
-	replace case_type = "4 - new upload, several versions" if (digit>1 & !missing(digit) & veralt_dlw == "NA")
-	drop digit
+	gen digit_alt = substr(veralt_gld, -2, 2)
+	gen digit_mast = substr(vermast_gld, -2, 2)
+
+	destring digit_alt, replace
+	destring digit_mast, replace
+	
+	replace case_type = "4 - new upload, several versions" if ((digit_alt>1 | digit_mast>1) & veralt_dlw == "NA")
+	drop digit_alt digit_mast
 	
 	gen rawdir = "${gldfolder}" + "/" + country + "/" + country + "_" + years + "_" + survname + "/" + country + "_" + years + "_" + survname + "_" + vermast_gld + "_M/Data/Stata"
 	gen harmdir = "${gldfolder}" + "/" + country + "/" + country + "_" + years + "_" + survname + "/" + country + "_" + years + "_" + survname + "_" + vermast_gld + "_M_" + veralt_gld + "_A_GLD/Data/Harmonized"
