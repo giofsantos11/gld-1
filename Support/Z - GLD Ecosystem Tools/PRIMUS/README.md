@@ -21,6 +21,26 @@ This GitHub page serves as a public resource for documenting the integration of 
 - Documentation of PRIMUS protocols and constraints,
 - Reflections on best practices for addressing PRIMUS-specific requirements.
 
+## The PRIMUS workflow
+
+**1. Reconciliation and Case Classification**
+The workflow begins by comparing the contents of the GLD server with Datalibweb records to identify which survey versions need to be uploaded. This step categorizes each case into one of several types: new upload, version update, or gap-filling due to missing intermediate versions. The result is an Excel file detailing the required upload actions per survey.
+
+**2. Preparation and Packaging**
+For each identified survey, the harmonized and (when applicable) raw data folders are prepared. XML metadata is generated for each harmonized file, and survey folders are compressed into ZIP files following PRIMUS folder structure and file type constraints. Folder size is checked to ensure it does not exceed 1.5 GB; if it does, a .doc file is created to explain how users can request the full dataset.
+
+**3. Upload to PRIMUS**
+Using the Stata PRIMUS API, harmonized and raw ZIP files (along with the XML) are uploaded into the system. Each upload creates a transaction ID that is recorded in a log file. Raw files are only uploaded for relevant cases (e.g., new uploads or raw updates). Surveys with missing .dta files or invalid configurations are skipped and flagged.
+
+**4. Confirmation of Transactions**
+Once uploaded, all transactions are initially in draft status. The script then confirms each transaction, moving it from draft to pending approval. This step is handled separately from upload to avoid timing issues that arise when trying to confirm and approve too soon after upload.
+
+**5. Approval of Uploads**
+On a separate run (usually the following day), the confirmed transactions are reviewed and approved using another script. This final step makes the datasets visible and accessible on Datalibweb. Only transactions that passed earlier checks and are confirmed without errors are submitted for approval.
+
+
+## Navigating this repository
+
 ### [Tasks folder](./Tasks/)
 
 The `Tasks` folder contains the `.do` files that execute the main stages of the upload pipeline. Each task corresponds to a discrete set of operations, executed in sequence as part of the end-to-end workflow:
