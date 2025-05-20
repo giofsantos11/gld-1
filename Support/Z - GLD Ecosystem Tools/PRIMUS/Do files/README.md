@@ -149,5 +149,14 @@ Every upload attempt, success, or failure is recorded in the log file:
 - ZIP files from the current round are cleared from the output folder to prevent clutter.
 
 
+## `confirm upload.do`: Confirm PRIMUS Upload Transactions
+
+This script finalizes GLD uploads into PRIMUS by confirming transaction records that were previously uploaded in draft status. After uploading data through PRIMUS, all datasets are initially stored as draft transactions. These drafts are not yet visible to PRIMUS reviewers and therefore must be explicitly confirmed to move them into reviewable status. This script automates that confirmation process.
+
+This script is designed to:
+
+- Load the list of transaction IDs created during the upload phase (from `upload sequence.do`);
+- Loop through each row, confirming both harmonized and raw transactions;
+- Export a fresh transaction file (`latest.csv`) that will serve as the basis for the **approval step** (Task 2).
 
   
