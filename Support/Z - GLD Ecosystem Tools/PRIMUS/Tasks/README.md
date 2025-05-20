@@ -1,10 +1,10 @@
 # Tasks
 
-The integration process is organized into three separate tasks stored as Stata `.do` files, each corresponding to a scheduled task. These will be executed automatically using a task scheduler on different dates or triggers, depending on the workflow.
+The integration process is organized into three separate tasks stored as Stata `.do` files, each corresponding to a scheduled task. These will be executed automatically using a task scheduler on different dates or triggers, depending on the workflow. 
 
 ### Task 1 – Upload and Confirm
 
-This task is responsible for identifying GLD surveys that have not yet been uploaded or updated in Datalibweb and initiating their transfer through PRIMUS. It involves a series of structured sub-tasks that ensure data is compliant with PRIMUS protocols and correctly registered in the system.
+This task is responsible for identifying GLD surveys that have not yet been uploaded or updated in Datalibweb and initiating their transfer through PRIMUS. It involves a series of structured sub-tasks that ensure data is compliant with PRIMUS protocols and correctly registered in the system. The `task1.do` is a master do file involving a set of sub-processes, which are described further in the [do file folder](https://github.com/giofsantos11/gld-1/tree/primus/Support/Z%20-%20GLD%20Ecosystem%20Tools/PRIMUS/Do%20files). It begins by setting the parameters, such as the location of the important folders, the inclusion of panel data, and the file size restrictions. Then, it proceeds with the following processes:
 
 **a. Reconciling GLD and Datalibweb survey inventory**  
 The first step involves comparing the set of harmonized surveys available on the GLD server with those already available on Datalibweb. This reconciliation identifies any missing surveys or surveys that have been updated in GLD but not yet uploaded to PRIMUS, and flags them for upload.
