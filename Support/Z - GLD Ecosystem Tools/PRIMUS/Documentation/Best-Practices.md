@@ -14,9 +14,7 @@ This logic prevents accidental overwriting or skipped uploads due to incomplete 
 
 ### 2. Creation of `.doc` Files for Oversized Datasets
 
-When a survey folder exceeds the 1.5 GB size limit imposed by PRIMUS, the harmonized or raw data cannot be uploaded. Instead of skipping the upload entirely, the script creates a `.doc` file in the `Doc/Technical/` folder with the message:
-
-> "The full data cannot be uploaded to Datalibweb because it is too big. To access the data, write an email..."
+When a survey folder exceeds the 1.5 GB size limit imposed by PRIMUS, the harmonized or raw data cannot be uploaded. Instead of skipping the upload entirely, the script creates a `.doc` file in the `Doc/Technical/` folder with the instructions on how to access the complete data.
 
 This allows the folder to still be uploaded and registered in PRIMUS, preventing it from being misclassified as missing. Reviewers will see the explanatory `.doc` file and know that no action is required.
 
