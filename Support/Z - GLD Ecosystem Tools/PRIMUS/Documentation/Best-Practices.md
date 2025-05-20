@@ -55,7 +55,7 @@ Before uploading, the script performs a number of defensive checks to ensure dat
 | **Check for `lstatus`**  | The `lstatus` variable should be present in the harmonized folder | If missing, not possible to create XML file and upload harmonized; thus, the survey is skipped and issue is logged. |
 | **Folder size check**      | The total size of each folder must be under 1.5 GB        | If exceeded, the data is not uploaded and a `.doc` file is created to explain why |
 | **Case logic check**       | Raw data is only uploaded for surveys requiring new or updated raw files | Avoids uploading unnecessary files                             |
-| **GLD must have more versions than Datalibweb** | The number of versions found in GLD should be greater than in Datalibweb | If not, this may indicate a problem in GLD, such as accidental deletion or incomplete storage, and the upload is skipped or flagged |
+| **GLD must have greater than or equal # of versions** | The number of versions found in GLD should be greater than in or equal to Datalibweb | If not, this may indicate a problem in GLD, such as accidental deletion or incomplete storage, and the upload is skipped or flagged |
 
 
 ### 6. One-at-a-time uploads for multiple updates
