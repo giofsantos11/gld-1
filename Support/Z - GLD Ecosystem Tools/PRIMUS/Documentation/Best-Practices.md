@@ -66,7 +66,7 @@ To resolve this, our workflow implements a staggered approach. During each run, 
 
 For example, suppose GLD contains versions V01 and V03, but only V01 is in Datalibweb. Since version V02 is missing, the program will upload V02 during this run. On the next run—after V02 has been approved—V03 will then be recognized as the next earliest missing version and will be uploaded.
 
-### 7. Separating upload confirm and approve
+### 7. Separating upload/confirm and approve
 
 Uploading survey folders to PRIMUS takes time to complete, and attempting to confirm and approve them too soon can lead to errors. To prevent this, the upload and confirmation steps are performed on one day, and the approval step is run on a separate day. After each upload, the script generates a CSV log containing transaction IDs and status flags. To isolate only the successful uploads for approval, a filtered version of this log, excluding rows with errors, is saved as `latest.csv`. This file is then used in the next day’s run to approve the confirmed transactions then deleted as soon as approval is successful.
 
