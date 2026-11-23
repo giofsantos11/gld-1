@@ -16,6 +16,12 @@ program gldpanel_issue_check, rclass
     if "`male'" == "" local male male
 	if "`countrycode'" == "" local countrycode countrycode
 
+    * Var 'wave' needs to be numeric for this to work, check and alert user if not
+    capture confirm numeric variable `wave'
+    if _rc != 0 {
+    	display as error "Error: Variable 'wave' must be numeric. If Q1 --> 1"
+    	error 198 
+    }
 
     * Temporary variable declarations
     tempvar earliest_year actual_diff odd_diff id_odd_diff diff_sex id_diff_sex
@@ -42,8 +48,7 @@ program gldpanel_issue_check, rclass
     replace `diff_relharm' = (`diff_relharm' > 0 & !missing(`diff_relharm'))
     bys `hhid' `pid': egen `id_diff_relharm' = max(`diff_relharm')
 
-    bys `hhid' `pid' `year': gen `first_wave_year' = `wave' if _n == 1
-    replace `first_wave_year' = `first_wave_year'[_n-1] if missing(`first_wave_year')
+    bys `hhid' `pid' `year': egen `first_wave_year' = min(`wave')
 
     gen `agetag' = `age' if `year' == `earliest_year' & `wave' == `first_wave_year'
     bys `hhid' `pid': egen `minage' = min(`agetag')

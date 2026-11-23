@@ -19,7 +19,7 @@ male is a dummy variable that specifies the sex – male or female – of an ind
 
 **relationharm**
 
-relationharm is a string variable that indicates a relationship to the reference person of household (usually the head of household). Variable values coded as ‘98’ or other numeric characters should be excluded from the values of relationharm variable.
+relationharm is an integer categorical variable that indicates a relationship to the reference person of household (usually the head of household). Variable values coded as ‘98’ or other placeholder codes should be excluded from the values of relationharm variable.
 
 Relationship to head of household, six categories after harmonization:
 
@@ -156,12 +156,6 @@ marital must be an integer in the range [1,5].
 
 ```
 marital<0 & marital>5 & mod(marital, 1) == 1
-```
-
-Children are “Never married” and should be coded as so even though it may be perceived as obvious. The marital status of individuals should be harmonized for all individuals. Harmonizers should check to make sure children are not systematically left with missing values for marital.
-
-```
-tab age marital, missing
 ```
 
 weight cannot be missing
